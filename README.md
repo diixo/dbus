@@ -33,7 +33,7 @@ mv -v /usr/lib/libdbus-1.so.* /lib
 ln -sfv ../../lib/$(readlink /usr/lib/libdbus-1.so) /usr/lib/libdbus-1.so
 ```
 
-More information from source:
+More deployment information from source:
 http://www.linuxfromscratch.org/lfs/view/7.5-systemd/chapter06/libdbus.html
 
 ### Patching from capicxx-dbus-runtime
