@@ -72,6 +72,7 @@ Now use CMake to build the CommonAPI-DBus-runtime library. We assume that your s
 
 ```bash
 $ cd capicxx-dbus-runtime
+$ sudo rm -r build
 $ mkdir build && cd build
 $ cmake -D USE_INSTALLED_COMMONAPI=ON -D CMAKE_INSTALL_PREFIX=/usr/local ..
 $ make
