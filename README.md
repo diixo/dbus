@@ -51,8 +51,8 @@ $ cd dbus-<VERSION>
 $ patch -p1 < </path/to/CommonAPI-DBus/src/dbus-patches/patch-names>.patch 
 $ ./configure --prefix=</path to your preferred installation folder for patched libdbus>
 $ make -C dbus 
-$ make -C dbus install
-$ make install-pkgconfigDATA
+$ sudo make -C dbus install
+$ sudo make install-pkgconfigDATA
 ```
 
 You can change the installation directory by the prefix option or you can let it uninstalled (skip the _make install_ commands).
