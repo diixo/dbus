@@ -12,13 +12,13 @@ $ sudo apt-get install autoconf-archive
 ```
 Prepare libdbus for compilation:
 ```bash
-$ ./configure --prefix=/usr/local/lib/dbus-1.12.16
+$ ./configure --prefix=/usr/local
 ```
 Compile and install the package:
 ```bash
-$ make -C dbus 
-$ make -C dbus install
-$ make install-pkgconfigDATA
+$ sudo make -C dbus 
+$ sudo make -C dbus install
+$ sudo make install-pkgconfigDATA
 ```
 ### Optional libdbus build
 This package does come with a testsuite, but it is not possible to run it because only part of the package was built.
@@ -71,12 +71,11 @@ $ export PKG_CONFIG_PATH="/usr/local/lib/pkgconfig:$PKG_CONFIG_PATH"
 Now use CMake to build the CommonAPI-DBus-runtime library. We assume that your source directory is _common-api-dbus-runtime_:
 
 ```bash
-$ cd common-api-dbus-runtime
-$ mkdir build
-$ cd build
+$ cd capicxx-dbus-runtime
+$ mkdir build && cd build
 $ cmake -D USE_INSTALLED_COMMONAPI=ON -D CMAKE_INSTALL_PREFIX=/usr/local ..
 $ make
-$ make install
+$ sudo make install
 ```
 
 You can change the installation directory by the CMake variable _CMAKE_INSTALL_PREFIX_ or you can let it uninstalled (skip the _make install_ command). If you want to use the uninstalled version of CommonAPI set the CMake variable _USE_INSTALLED_COMMONAPI_ to _OFF_.
