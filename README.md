@@ -39,7 +39,7 @@ ln -sfv ../../lib/$(readlink /usr/lib/libdbus-1.so) /usr/lib/libdbus-1.so
 More information from source:
 http://www.linuxfromscratch.org/lfs/view/7.5-systemd/chapter06/libdbus.html
 
-#### Patching libdbus:
+### Patching from capicxx-dbus-runtime:
 
 CommonAPI-DBus needs some api functions of libdbus which are not available in actual libdbus versions. For these additional api functions it is necessary to patch the required libdbus version with all the patches in the directory src/dbus-patches. Use autotools to build libdbus.
 VERSION=1.12.16 for Ubuntu-20.04 (as example)
@@ -58,7 +58,7 @@ $ make install-pkgconfigDATA
 You can change the installation directory by the prefix option or you can let it uninstalled (skip the _make install_ commands).
 WARNING: Installing the patched libdbus to /usr/local can prevent your system from booting correctly at the next reboot.
 
-#### Build capicxx-dbus-runtime:
+### Build capicxx-dbus-runtime:
 
 In order to build the CommonAPI-DBus-Runtime library the pkgconfig files of the patched libdbus library must be added to the _PKG_CONFIG_PATH_.
 
