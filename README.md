@@ -1,7 +1,6 @@
-## Short Descriptions
-libdbus-1
-
-Contains API functions used to communicate with the D-Bus message bus.
+## Short Description
+Release dbus-library.
+Patched for CommonAPI from http://dbus.freedesktop.org/releases/dbus. Contains API functions used to communicate with the DBus message bus.
 
 ## Build libdbus for Linux
 Should install before:
