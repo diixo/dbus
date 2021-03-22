@@ -8,17 +8,17 @@ Contains API functions used to communicate with the D-Bus message bus.
 #### Build libdbus
 Should install before:
 ```bash
-$ sudo apt-get install autoconf-archive
+sudo apt-get install autoconf-archive
 ```
 Prepare libdbus for compilation:
 ```bash
-$ ./configure --prefix=/usr/local
+./configure --prefix=/usr/local
 ```
 Compile and install the package:
 ```bash
-$ sudo make -C dbus 
-$ sudo make -C dbus install
-$ sudo make install-pkgconfigDATA
+sudo make -C dbus 
+sudo make -C dbus install
+sudo make install-pkgconfigDATA
 ```
 ### Optional libdbus build
 This package does come with a testsuite, but it is not possible to run it because only part of the package was built.
@@ -45,14 +45,14 @@ CommonAPI-DBus needs some api functions of libdbus which are not available in ac
 VERSION=1.12.16 for Ubuntu-20.04 (as example)
 
 ```bash
-$ wget http://dbus.freedesktop.org/releases/dbus/dbus-<VERSION>.tar.gz
-$ tar -xzf dbus-<VERSION>.tar.gz
-$ cd dbus-<VERSION>
-$ patch -p1 < </path/to/CommonAPI-DBus/src/dbus-patches/patch-names>.patch 
-$ ./configure --prefix=</path to your preferred installation folder for patched libdbus>
-$ make -C dbus 
-$ sudo make -C dbus install
-$ sudo make install-pkgconfigDATA
+wget http://dbus.freedesktop.org/releases/dbus/dbus-<VERSION>.tar.gz
+tar -xzf dbus-<VERSION>.tar.gz
+cd dbus-<VERSION>
+patch -p1 < </path/to/CommonAPI-DBus/src/dbus-patches/patch-names>.patch 
+./configure --prefix=</path to your preferred installation folder for patched libdbus>
+make -C dbus 
+sudo make -C dbus install
+sudo make install-pkgconfigDATA
 ```
 
 You can change the installation directory by the prefix option or you can let it uninstalled (skip the _make install_ commands).
@@ -65,18 +65,18 @@ In order to build the CommonAPI-DBus-Runtime library the pkgconfig files of the 
 For example, if the patched _libdbus_ library is available in /usr/local, set the _PKG_CONFIG_PATH_ variable as follows:
 
 ```bash
-$ export PKG_CONFIG_PATH="/usr/local/lib/pkgconfig:$PKG_CONFIG_PATH" 
+export PKG_CONFIG_PATH="/usr/local/lib/pkgconfig:$PKG_CONFIG_PATH" 
 ```
 
 Now use CMake to build the CommonAPI-DBus-runtime library. We assume that your source directory is _common-api-dbus-runtime_:
 
 ```bash
-$ cd capicxx-dbus-runtime
-$ sudo rm -r build
-$ mkdir build && cd build
-$ cmake -D USE_INSTALLED_COMMONAPI=ON -D CMAKE_INSTALL_PREFIX=/usr/local ..
-$ make
-$ sudo make install
+cd capicxx-dbus-runtime
+sudo rm -r build
+mkdir build && cd build
+cmake -D USE_INSTALLED_COMMONAPI=ON -D CMAKE_INSTALL_PREFIX=/usr/local ..
+make
+sudo make install
 ```
 
 You can change the installation directory by the CMake variable _CMAKE_INSTALL_PREFIX_ or you can let it uninstalled (skip the _make install_ command). If you want to use the uninstalled version of CommonAPI set the CMake variable _USE_INSTALLED_COMMONAPI_ to _OFF_.
