@@ -1,185 +1,84 @@
-Sections in this file describe:
- - introduction and overview
- - low-level vs. high-level API
- - version numbers
- - options to the configure script
- - ABI stability policy
+#### Short Descriptions
+libdbus-1
 
-Introduction
-===
+Contains API functions used to communicate with the D-Bus message bus.
 
-D-Bus is a simple system for interprocess communication and coordination.
+#### Build Instructions for Linux
 
-The "and coordination" part is important; D-Bus provides a bus daemon that does things like:
- - notify applications when other apps exit
- - start services on demand
- - support single-instance applications
+##### Build libdbus:
+Should install before:
+```bash
+$ sudo apt-get install autoconf-archive
+```
+Prepare libdbus for compilation:
+```bash
+$ ./configure --prefix=/usr/local/lib/dbus-1.12.20
+```
+Compile and install the package:
+```bash
+$ make -C dbus 
+$ make -C dbus install
+$ make install-pkgconfigDATA
+```
+##### Optional libdbus build:
+This package does come with a testsuite, but it is not possible to run it because only part of the package was built.
+```bash
+make -C dbus lib_LTLIBRARIES=libdbus-1.la \
+     install-libLTLIBRARIES \
+     install-dbusincludeHEADERS \
+     install-nodist_dbusarchincludeHEADERS
+make install-pkgconfigDATA
+```
 
-See http://www.freedesktop.org/software/dbus/ for lots of documentation, 
-mailing lists, etc.
+The shared library needs to be moved to /lib, and as a result the .so file in /usr/lib will need to be recreated:
+```bash
+mv -v /usr/lib/libdbus-1.so.* /lib
+ln -sfv ../../lib/$(readlink /usr/lib/libdbus-1.so) /usr/lib/libdbus-1.so
+```
 
-See also the file CONTRIBUTING.md for notes of interest to developers
-working on D-Bus.
+More information from source:
+http://www.linuxfromscratch.org/lfs/view/7.5-systemd/chapter06/libdbus.html
 
-If you're considering D-Bus for use in a project, you should be aware
-that D-Bus was designed for a couple of specific use cases, a "system
-bus" and a "desktop session bus." These are documented in more detail
-in the D-Bus specification and FAQ available on the web site.
+##### Patching libdbus:
 
-If your use-case isn't one of these, D-Bus may still be useful, but
-only by accident; so you should evaluate carefully whether D-Bus makes
-sense for your project.
+CommonAPI-DBus needs some api functions of libdbus which are not available in actual libdbus versions. For these additional api functions it is necessary to patch the required libdbus version with all the patches in the directory src/dbus-patches. Use autotools to build libdbus.
+VERSION=1.12.16 for Ubuntu-20.04 (as example)
 
-Security
-==
+```bash
+$ wget http://dbus.freedesktop.org/releases/dbus/dbus-<VERSION>.tar.gz
+$ tar -xzf dbus-<VERSION>.tar.gz
+$ cd dbus-<VERSION>
+$ patch -p1 < </path/to/CommonAPI-DBus/src/dbus-patches/patch-names>.patch 
+$ ./configure --prefix=</path to your preferred installation folder for patched libdbus>
+$ make -C dbus 
+$ make -C dbus install
+$ make install-pkgconfigDATA
+```
 
-If you find a security vulnerability that is not known to the public,
-please report it privately to dbus-security@lists.freedesktop.org
-or by reporting a freedesktop.org bug that is marked as
-restricted to the "D-BUS security group" (you might need to "Show
-Advanced Fields" to have that option).
+You can change the installation directory by the prefix option or you can let it uninstalled (skip the _make install_ commands).
+WARNING: Installing the patched libdbus to /usr/local can prevent your system from booting correctly at the next reboot.
 
-On Unix systems, the system bus (dbus-daemon --system) is designed
-to be a security boundary between users with different privileges.
+##### Build capicxx-dbus-runtime:
 
-On Unix systems, the session bus (dbus-daemon --session) is designed
-to be used by a single user, and only accessible by that user.
+In order to build the CommonAPI-DBus-Runtime library the pkgconfig files of the patched libdbus library must be added to the _PKG_CONFIG_PATH_.
 
-We do not currently consider D-Bus on Windows to be security-supported,
-and we do not recommend allowing untrusted users to access Windows
-D-Bus via TCP.
+For example, if the patched _libdbus_ library is available in /usr/local, set the _PKG_CONFIG_PATH_ variable as follows:
 
-Note: low-level API vs. high-level binding APIs
-===
+```bash
+$ export PKG_CONFIG_PATH="/usr/local/lib/pkgconfig:$PKG_CONFIG_PATH" 
+```
 
-A core concept of the D-Bus implementation is that "libdbus" is
-intended to be a low-level API. Most programmers are intended to use
-the bindings to GLib, Qt, Python, Mono, Java, or whatever. These
-bindings have varying levels of completeness and are maintained as
-separate projects from the main D-Bus package. The main D-Bus package
-contains the low-level libdbus, the bus daemon, and a few command-line
-tools such as dbus-launch.
+Now use CMake to build the CommonAPI-DBus-runtime library. We assume that your source directory is _common-api-dbus-runtime_:
 
-If you use the low-level API directly, you're signing up for some
-pain. Think of the low-level API as analogous to Xlib or GDI, and the
-high-level API as analogous to Qt/GTK+/HTML.
+```bash
+$ cd common-api-dbus-runtime
+$ mkdir build
+$ cd build
+$ cmake -D USE_INSTALLED_COMMONAPI=ON -D CMAKE_INSTALL_PREFIX=/usr/local ..
+$ make
+$ make install
+```
 
-Version numbers
-===
+You can change the installation directory by the CMake variable _CMAKE_INSTALL_PREFIX_ or you can let it uninstalled (skip the _make install_ command). If you want to use the uninstalled version of CommonAPI set the CMake variable _USE_INSTALLED_COMMONAPI_ to _OFF_.
 
-D-Bus uses the common "Linux kernel" versioning system, where
-even-numbered minor versions are stable and odd-numbered minor
-versions are development snapshots.
-
-So for example, development snapshots: 1.1.1, 1.1.2, 1.1.3, 1.3.4
-Stable versions: 1.0, 1.0.1, 1.0.2, 1.2.1, 1.2.3
-
-All pre-1.0 versions were development snapshots.
-
-Development snapshots make no ABI stability guarantees for new ABI
-introduced since the last stable release. Development snapshots are
-likely to have more bugs than stable releases, obviously.
-
-Configuration 
-===
-
-dbus could be build by using autotools or cmake. 
-
-When using autotools the configure step is initiated by running ./configure 
-with or without additional configuration flags. dbus requires GNU Make
-(on BSD systems, this is typically called gmake) or a "make" implementation
-with compatible extensions.
-
-When using cmake the configure step is initiated by running the cmake 
-program with or without additional configuration flags. 
-
-Configuration flags
-===
-
-When using autotools, run "./configure --help" to see the possible
-configuration options and environment variables.
-
-When using cmake, inspect README.cmake to see the possible
-configuration options and environment variables.
-    
-API/ABI Policy
-===
-
-Now that D-Bus has reached version 1.0, the objective is that all
-applications dynamically linked to libdbus will continue working
-indefinitely with the most recent system and session bus daemons.
-
- - The protocol will never be broken again; any message bus should 
-   work with any client forever. However, extensions are possible
-   where the protocol is extensible.
-
- - If the library API is modified incompatibly, we will rename it 
-   as in http://ometer.com/parallel.html - in other words, 
-   it will always be possible to compile against and use the older 
-   API, and apps will always get the API they expect.
-
-Interfaces can and probably will be _added_. This means both new
-functions and types in libdbus, and new methods exported to
-applications by the bus daemon.
-
-The above policy is intended to make D-Bus as API-stable as other
-widely-used libraries (such as GTK+, Qt, Xlib, or your favorite
-example). If you have questions or concerns they are very welcome on
-the D-Bus mailing list.
-
-NOTE ABOUT DEVELOPMENT SNAPSHOTS AND VERSIONING
-
-Odd-numbered minor releases (1.1.x, 1.3.x, 2.1.x, etc. -
-major.minor.micro) are devel snapshots for testing, and any new ABI
-they introduce relative to the last stable version is subject to
-change during the development cycle.
-
-Any ABI found in a stable release, however, is frozen.
-
-ABI will not be added in a stable series if we can help it. i.e. the
-ABI of 1.2.0 and 1.2.5 you can expect to be the same, while the ABI of
-1.4.x may add more stuff not found in 1.2.x.
-
-NOTE ABOUT STATIC LINKING
-
-We are not yet firmly freezing all runtime dependencies of the libdbus
-library. For example, the library may read certain files as part of
-its implementation, and these files may move around between versions.
-
-As a result, we don't yet recommend statically linking to
-libdbus. Also, reimplementations of the protocol from scratch might
-have to work to stay in sync with how libdbus behaves.
-
-To lock things down and declare static linking and reimplementation to
-be safe, we'd like to see all the internal dependencies of libdbus
-(for example, files read) well-documented in the specification, and
-we'd like to have a high degree of confidence that these dependencies
-are supportable over the long term and extensible where required.
-
-NOTE ABOUT HIGH-LEVEL BINDINGS
-
-Note that the high-level bindings are _separate projects_ from the
-main D-Bus package, and have their own release cycles, levels of
-maturity, and ABI stability policies. Please consult the documentation
-for your binding.
-
-Bootstrapping D-Bus on new platforms
-===
-
-A full build of D-Bus, with all regression tests enabled and run, has some
-dependencies which themselves depend on D-Bus, either for compilation or
-for some of *their* regression tests: GLib, dbus-glib and dbus-python are
-currently affected.
-
-To avoid circular dependencies, when bootstrapping D-Bus for the first time
-on a new OS or CPU architecture, you can either cross-compile some of
-those components, or choose the build order and options carefully:
-
-* build and install D-Bus without tests
-  - do not use the --enable-modular-tests=yes configure option
-  - do not use the --enable-tests=yes configure option
-* build and install GLib, again without tests
-* use those versions of libdbus and GLib to build and install dbus-glib
-* ... and use those to install dbus-python
-* rebuild libdbus; this time you can run all of the tests
-* rebuild GLib; this time you can run all of the tests
+For further build instructions (build for windows, build documentation, tests etc.) please refer to the CommonAPI-DBus tutorial.
