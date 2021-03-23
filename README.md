@@ -1,6 +1,6 @@
 ## Description
 Release dbus-library.
-Patched for CommonAPI from http://dbus.freedesktop.org/releases/dbus. Contains API functions used to communicate with the DBus message bus.
+Patched for CommonAPI from https://github.com/freedesktop/dbus. Contains API functions used to communicate with the DBus message bus.
 
 ## Build libdbus for Linux
 Should update before:
