@@ -7,7 +7,7 @@ Should install before:
 ```bash
 sudo apt-get install autoconf-archive
 ```
-Prepare libdbus for compilation:
+Clone repo and run build-configuration before compilation:
 ```bash
 ./configure --prefix=/usr/local
 ```
@@ -17,7 +17,7 @@ sudo make -C dbus
 sudo make -C dbus install
 sudo make install-pkgconfigDATA
 ```
-### (Optional) build
+#### (Optional) build
 This package does come with a testsuite, but it is not possible to run it because only part of the package was built.
 ```bash
 make -C dbus lib_LTLIBRARIES=libdbus-1.la \
@@ -33,10 +33,9 @@ mv -v /usr/lib/libdbus-1.so.* /lib
 ln -sfv ../../lib/$(readlink /usr/lib/libdbus-1.so) /usr/lib/libdbus-1.so
 ```
 
-More deployment information from source:
-http://www.linuxfromscratch.org/lfs/view/7.5-systemd/chapter06/libdbus.html
+More deployment information from: http://www.linuxfromscratch.org/lfs/view/7.5-systemd/chapter06/libdbus.html
 
-### (Optional) patching from capicxx-dbus-runtime
+#### (Optional) patching from capicxx-dbus-runtime
 
 CommonAPI-DBus needs some api functions of libdbus which are not available in actual libdbus versions. For these additional api functions it is necessary to patch the required libdbus version with all the patches in the directory src/dbus-patches. Use autotools to build libdbus.
 VERSION=1.12.16 for Ubuntu-20.04 (as example)
