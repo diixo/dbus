@@ -3,11 +3,11 @@ Release dbus-library.
 Patched for CommonAPI from http://dbus.freedesktop.org/releases/dbus. Contains API functions used to communicate with the DBus message bus.
 
 ## Build libdbus for Linux
-Should install before:
+Should update before:
 ```bash
 sudo apt-get install autoconf-archive
 ```
-Clone repo and run build-configuration before compilation. We use default prefix=/usr/local that will be the same prefix for compilation capicxx-dbus-runtime also:
+Clone repository and run build-configuration before compilation. We use default prefix=/usr/local that will be the same prefix for compilation capicxx-dbus-runtime also:
 ```bash
 ./configure --prefix=/usr/local
 ```
