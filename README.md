@@ -1,5 +1,5 @@
 ## Description
-Release dbus-library.
+Release dbus-1.12.16.
 Patched for CommonAPI from https://github.com/freedesktop/dbus. Contains API functions used to communicate with the DBus message bus.
 
 ## Build libdbus for Linux
@@ -54,7 +54,7 @@ sudo make install-pkgconfigDATA
 You can change the installation directory by the prefix option or you can let it uninstalled (skip the _make install_ commands).
 WARNING: Installing the patched libdbus to /usr/local can prevent your system from booting correctly at the next reboot.
 
-## Build CommonAPI core-runtime
+## Build CommonAPI-core-runtime
 
 Clone repository:
 ```bash
@@ -69,7 +69,7 @@ make
 sudo make install
 ```
 
-## Build CommonAPI dbus-runtime (under patched libdbus)
+## Build CommonAPI-dbus-runtime (under patched libdbus)
 
 Clone repository:
 ```bash
