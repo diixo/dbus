@@ -59,7 +59,7 @@ WARNING: Installing the patched libdbus to /usr/local can prevent your system fr
 
 Clone repository:
 ```bash
-https://github.com/GENIVI/capicxx-core-runtime.git
+git clone https://github.com/GENIVI/capicxx-core-runtime.git
 ```
 Compile:
 ```bash
