@@ -7,7 +7,7 @@ Should install before:
 ```bash
 sudo apt-get install autoconf-archive
 ```
-Clone repo and run build-configuration before compilation:
+Clone repo and run build-configuration before compilation. We use default prefix=/usr/local that will be the same prefix for compilation capicxx-dbus-runtime also:
 ```bash
 ./configure --prefix=/usr/local
 ```
