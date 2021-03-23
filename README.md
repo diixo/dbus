@@ -1,4 +1,4 @@
-## Short Description
+## Description
 Release dbus-library.
 Patched for CommonAPI from http://dbus.freedesktop.org/releases/dbus. Contains API functions used to communicate with the DBus message bus.
 
@@ -70,7 +70,7 @@ make
 sudo make install
 ```
 
-## Build CommonAPI dbus-runtime under patched libdbus
+## Build CommonAPI dbus-runtime (under patched libdbus)
 
 Clone repository:
 ```bash
