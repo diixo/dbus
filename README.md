@@ -98,3 +98,5 @@ sudo make install
 You can change the installation directory by the CMake variable _CMAKE_INSTALL_PREFIX_ or you can let it uninstalled (skip the _make install_ command). If you want to use the uninstalled version of CommonAPI set the CMake variable _USE_INSTALLED_COMMONAPI_ to _OFF_.
 
 For further build instructions (build for windows, build documentation, tests etc.) please refer to the CommonAPI-DBus tutorial.
+
+Full information list of CommonAPI-tools: http://genivi.github.io/capicxx-core-tools/
