@@ -71,7 +71,7 @@ make
 sudo make install
 ```
 
-## 3. Build CommonAPI-dbus-runtime (under patched libdbus)
+## 3. Build CommonAPI-dbus-runtime
 
 Clone repository:
 ```bash
