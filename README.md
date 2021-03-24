@@ -54,7 +54,7 @@ sudo make install-pkgconfigDATA
 ```
 
 You can change the installation directory by the prefix option or you can let it uninstalled (skip the _make install_ commands).
-WARNING: Installing the patched libdbus to /usr/local can prevent your system from booting correctly at the next reboot.
+WARNING: Installing the patched libdbus to **/usr/local** can prevent your system from booting correctly at the next reboot.
 
 ## 2. Build CommonAPI-core-runtime
 
@@ -80,7 +80,7 @@ git clone https://github.com/GENIVI/capicxx-dbus-runtime.git
 
 In order to build the CommonAPI-DBus-Runtime library the pkgconfig files of the patched libdbus library must be added to the _PKG_CONFIG_PATH_.
 
-For example, if the patched _libdbus_ library is available in /usr/local, set the _PKG_CONFIG_PATH_ variable as follows:
+For example, if the patched _libdbus_ library is available in **/usr/local**, set the _PKG_CONFIG_PATH_ variable as follows:
 
 ```bash
 export PKG_CONFIG_PATH="/usr/local/lib/pkgconfig:$PKG_CONFIG_PATH" 
