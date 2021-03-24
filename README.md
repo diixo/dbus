@@ -17,6 +17,8 @@ sudo make -C dbus
 sudo make -C dbus install
 sudo make install-pkgconfigDATA
 ```
+Now, it is ready to use.
+
 #### (Optional) build:
 This package does come with a testsuite, but it is not possible to run it because only part of the package was built.
 ```bash
