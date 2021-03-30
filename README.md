@@ -2,7 +2,7 @@
 Release **dbus-1.12.16**.
 Patched for CommonAPI from https://github.com/freedesktop/dbus. Contains API functions used to communicate with the DBus message bus.
 
-## 1. Install DBus
+## Step 1. Install DBus
 Should update before:
 ```bash
 sudo apt-get install autoconf-archive
@@ -11,7 +11,7 @@ Clone repository and run build-configuration before compilation. We use default 
 ```bash
 ./configure --prefix=/usr/local
 ```
-Compile and install the package:
+Compile **libdbus** and install the package:
 ```bash
 sudo make -C dbus 
 sudo make -C dbus install
@@ -56,7 +56,7 @@ sudo make install-pkgconfigDATA
 You can change the installation directory by the prefix option or you can let it uninstalled (skip the _make install_ commands).
 WARNING: Installing the patched libdbus to **/usr/local** can prevent your system from booting correctly at the next reboot.
 
-## 2. Install CommonAPI-core-runtime
+## Step 2. Install CommonAPI-core-runtime
 
 Clone repository:
 ```bash
@@ -71,7 +71,7 @@ make
 sudo make install
 ```
 
-## 3. Install CommonAPI-dbus-runtime
+## Step 3. Install CommonAPI-dbus-runtime
 
 Clone repository:
 ```bash
