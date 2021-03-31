@@ -3772,10 +3772,14 @@ dbus_bool_t
 dbus_message_set_signature (DBusMessage *message,
                             const char  *signature)
 {
+  DBusString str;
+  _dbus_string_init_const (&str, signature);
+
   _dbus_return_val_if_fail (message != NULL, FALSE);
   _dbus_return_val_if_fail (!message->locked, FALSE);
-  _dbus_return_val_if_fail (signature == NULL ||
-                            _dbus_check_is_valid_signature (signature), FALSE);
+
+  _dbus_return_val_if_fail (signature != NULL &&
+        _dbus_validate_signature_with_reason (&str, 0, _dbus_string_get_length (&str)) == DBUS_VALID, FALSE);
   /* can't delete the signature if you have a message body */
   _dbus_return_val_if_fail (_dbus_string_get_length (&message->body) == 0 ||
                             signature != NULL, FALSE);
