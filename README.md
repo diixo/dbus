@@ -46,7 +46,7 @@ VERSION=1.12.16 is default version for Ubuntu-20.04 (as example)
 wget http://dbus.freedesktop.org/releases/dbus/dbus-<VERSION>.tar.gz
 tar -xzf dbus-<VERSION>.tar.gz
 cd dbus-<VERSION>
-patch -p1 < </path/to/CommonAPI-DBus/src/dbus-patches/patch-names>.patch 
+patch -p1 < </path/to/capicxx-dbus-runtime/src/dbus-patches/patch-names>.patch
 ./configure --prefix=</path to your preferred installation folder for patched libdbus>
 make -C dbus 
 sudo make -C dbus install
