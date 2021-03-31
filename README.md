@@ -73,7 +73,7 @@ sudo make install
 
 ## Step 3. Install CommonAPI-dbus-runtime
 
-Clone repository:
+Clone repository (v3.1.12.7 or highest):
 ```bash
 git clone https://github.com/GENIVI/capicxx-dbus-runtime.git
 ```
