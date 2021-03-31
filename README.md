@@ -11,7 +11,7 @@ Clone repository and run build-configuration before compilation. We use default 
 ```bash
 ./configure --prefix=/usr/local
 ```
-Compile **libdbus** and install the package:
+Build **libdbus** and install the package:
 ```bash
 sudo make -C dbus 
 sudo make -C dbus install
@@ -62,7 +62,7 @@ Clone repository (sync to **v3.1.12.6** or newest):
 ```bash
 git clone https://github.com/GENIVI/capicxx-core-runtime.git
 ```
-Compile:
+Build:
 ```bash
 cd capicxx-core-runtime
 mkdir build && cd build
