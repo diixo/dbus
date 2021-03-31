@@ -1,6 +1,6 @@
 ## Description
 Release **dbus-1.12.16**.
-Patched for CommonAPI from https://github.com/freedesktop/dbus. Contains API functions used to communicate with the DBus message bus.
+Patched (capicxx-dbus-runtime v3.1.12.7) for CommonAPI from https://github.com/freedesktop/dbus. Contains API functions used to communicate with the DBus message bus.
 
 ## Step 1. Install DBus
 Should update before:
@@ -58,7 +58,7 @@ WARNING: Installing the patched libdbus to **/usr/local** can prevent your syste
 
 ## Step 2. Install CommonAPI-core-runtime
 
-Clone repository:
+Clone repository (sync to **v3.1.12.6** or newest):
 ```bash
 git clone https://github.com/GENIVI/capicxx-core-runtime.git
 ```
