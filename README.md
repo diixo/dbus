@@ -64,7 +64,7 @@ git clone https://github.com/GENIVI/capicxx-core-runtime.git
 ```
 Build:
 ```bash
-cd capicxx-core-runtime
+cd <source-root>
 mkdir build && cd build
 cmake ..
 make
@@ -89,7 +89,7 @@ export PKG_CONFIG_PATH="/usr/local/lib/pkgconfig:$PKG_CONFIG_PATH"
 Now use CMake to build the CommonAPI-DBus-runtime library. We assume that your source directory is _common-api-dbus-runtime_:
 
 ```bash
-cd capicxx-dbus-runtime
+cd <source-root>
 sudo rm -r build
 mkdir build && cd build
 cmake -D USE_INSTALLED_COMMONAPI=ON -D CMAKE_INSTALL_PREFIX=/usr/local ..
