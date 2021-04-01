@@ -54,7 +54,7 @@ sudo make install-pkgconfigDATA
 ```
 
 You can change the installation directory by the prefix option or you can let it uninstalled (skip the _make install_ commands).
-WARNING: Installing the patched libdbus to **/usr/local** can prevent your system from booting correctly at the next reboot.
+**WARNING**: Installing the patched libdbus to **/usr/local** can prevent your system from booting correctly at the next reboot.
 
 ## Step 2. Install CommonAPI-core-runtime
 
