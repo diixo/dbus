@@ -1,5 +1,5 @@
 ## Description
-Release **dbus-1.12.16**.
+Release **dbus (libdbus-1-dev, v1.12.16)**.
 Patched (capicxx-dbus-runtime v3.1.12.7) for CommonAPI from https://github.com/freedesktop/dbus. Contains API functions used to communicate with the DBus message bus.
 
 ## Step 1. Install DBus
@@ -78,7 +78,7 @@ Clone repository (sync to **v3.1.12.7** or newest):
 git clone https://github.com/GENIVI/capicxx-dbus-runtime.git
 ```
 
-In order to build the CommonAPI-DBus-Runtime library the pkgconfig files of the patched libdbus library must be added to the _PKG_CONFIG_PATH_.
+In order to build the CommonAPI-DBus-runtime library the pkgconfig files of the patched libdbus library must be added to the _PKG_CONFIG_PATH_.
 
 For example, if the patched _libdbus_ library is available in **/usr/local**, set the _PKG_CONFIG_PATH_ variable as follows:
 
