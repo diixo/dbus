@@ -1,6 +1,6 @@
 ## Description
-Release **dbus (libdbus-1-dev, v1.12.16)**.
-Patched (capicxx-dbus-runtime v3.1.12.7) for CommonAPI from https://github.com/freedesktop/dbus. Contains API functions used to communicate with the DBus message bus.
+Library **dbus (libdbus-1-dev, v1.12.16)**.
+Patched by capicxx-dbus-runtime (v3.1.12.7) for CommonAPI from https://github.com/freedesktop/dbus. Contains API functions used to communicate with the DBus message bus.
 
 ## Step 1. Install DBus
 Should update before:
