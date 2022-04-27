@@ -84,6 +84,7 @@ In order to build the CommonAPI-DBus-runtime library the pkgconfig files of the 
 For example, if the patched _libdbus_ library is available in **/usr/local**, set the _PKG_CONFIG_PATH_ variable as follows:
 
 ```bash
+cd <source-root>
 export PKG_CONFIG_PATH="/usr/local/lib/pkgconfig:$PKG_CONFIG_PATH" 
 ```
 
