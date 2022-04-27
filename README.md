@@ -9,6 +9,7 @@ sudo apt-get install autoconf-archive
 ```
 Clone repository and run build-configuration before compilation. We use default prefix=**/usr/local** that will be the same prefix for compilation capicxx-dbus-runtime also:
 ```bash
+cd dbus
 ./configure --prefix=/usr/local
 ```
 Build **libdbus** and install the package:
