@@ -38,7 +38,7 @@ ln -sfv ../../lib/$(readlink /usr/lib/libdbus-1.so) /usr/lib/libdbus-1.so
 
 More deployment information from: http://www.linuxfromscratch.org/lfs/view/7.5-systemd/chapter06/libdbus.html
 
-#### (Optional) patching from capicxx-dbus-runtime:
+#### (Alternative) patching from capicxx-dbus-runtime:
 
 CommonAPI-DBus needs some api functions of libdbus which are not available in actual libdbus versions. For these additional api functions it is necessary to patch the required libdbus version with all the patches in the directory src/dbus-patches. Use autotools to build libdbus.
 VERSION=1.12.16 is default version for Ubuntu-20.04 (as example)
