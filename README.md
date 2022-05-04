@@ -20,7 +20,7 @@ sudo make install-pkgconfigDATA
 ```
 Now, it is ready to use.
 
-#### (Optional) build:
+#### (Alternative) build:
 This package does come with a testsuite, but it is not possible to run it because only part of the package was built.
 ```bash
 make -C dbus lib_LTLIBRARIES=libdbus-1.la \
