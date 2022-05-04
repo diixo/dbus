@@ -59,7 +59,7 @@ You can change the installation directory by the prefix option or you can let it
 
 ## Step 2. Install CommonAPI-core-runtime
 
-Clone repository (sync to **v3.1.12.6** or newest):
+Clone repository (sync to **v3.1.12.6**):
 ```bash
 git clone https://github.com/GENIVI/capicxx-core-runtime.git
 ```
@@ -74,7 +74,7 @@ sudo make install
 
 ## Step 3. Install CommonAPI-dbus-runtime
 
-Clone repository (sync to **v3.1.12.7** or newest):
+Clone repository (sync to **v3.1.12.7**):
 ```bash
 git clone https://github.com/GENIVI/capicxx-dbus-runtime.git
 ```
